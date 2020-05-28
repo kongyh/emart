@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" href="#">eMart</a>
+
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active list-inline">
+        <button type="button" class="btn btn-success" [hidden]="ifCartHidden" [routerLink]="['/cart']" routerLinkActive="router-link-active"  > 
+          <i class="material-icons">shopping_cart</i> <span class="badge badge-danger">{{count_in_cart}}</span>       
+        </button>
+        
+      </li>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <button class="btn btn-outline-success" [hidden]="ifLoginHidden" type="submit" [routerLink]="['/login']">Sign in</button>
+      <button class="btn btn-outline-success" [hidden]="!ifLoginHidden" type="submit" (click)="logout()">Sign Out</button>
+    </form>
+  </div>
+</nav>
+

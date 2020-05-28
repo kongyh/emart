@@ -1,0 +1,7 @@
+.nav-tabs .nav-item{
+    width: 50%;
+    text-align: center;
+}
+.required{
+    color: red;
+}

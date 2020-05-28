@@ -1,0 +1,61 @@
+<div>
+  <button type="button" class="btn btn-success inline-block" [routerLink]="['/sellerHome']">Back</button>
+</div>
+<div class="row">
+  <div class="col-2">
+    <span class=" d-none">display:none</span>
+  </div>
+  <div class="col-8">
+    <form [formGroup]="addItemForm">
+      <div class="form-group row">
+        <label for="i_name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="i_name" formControlName="i_name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="i_category_id" class="col-sm-2 col-form-label">Category</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="i_category_id" formControlName="i_category_id">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="i_subcategory_id" class="col-sm-2 col-form-label">Sub-Category</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="i_subcategory_id" formControlName="i_subcategory_id">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="i_mft" class="col-sm-2 col-form-label">Manufacturer</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="i_mft" formControlName="i_mft">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="i_desc" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="i_desc" formControlName="i_desc">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="i_price" class="col-sm-2 col-form-label">Price</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="i_price" formControlName="i_price">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="i_stock_num" class="col-sm-2 col-form-label">Stock</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="i_stock_num" formControlName="i_stock_num">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="i_remarks" class="col-sm-2 col-form-label">Remark</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" id="i_remarks" formControlName="i_remarks">
+        </div>
+      </div>
+      <div><button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onSubmit(addItemForm.value)">Submit</button></div>
+    </form>
+  </div>
+</div>

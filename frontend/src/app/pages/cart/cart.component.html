@@ -1,0 +1,60 @@
+<div class="row">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Description</th>
+        <th scope="col">Manufacturer</th>
+        <th scope="col">Price</th>
+        <th scope="col">Remark</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ item.i_desc }}</td>
+        <td>{{ item.i_mft }}</td>
+        <td>{{ item.i_price }}</td>
+        <td>{{ item.i_remarks }}</td>
+      <td><app-itemAlert [item]="item" (notify)="onNotify()"></app-itemAlert></td>
+      <td><button  class="btn btn-primary"  type="submit" (click)="deleteItem(i)" >Delete</button ></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="row">
+  <div class="col text-right">
+    total:<span>{{total}}</span>
+    tax:<span>0</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="input-group mb-3 float-right" style="width: 20%;">
+      <input type="text" class="form-control" placeholder="code" aria-describedby="button-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="discount()">Apply Discount</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col text-right">
+    total:<span>{{disTotal}}</span>
+    tax:<span>0</span>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <div class="float-right">
+      <button  class="btn btn-primary "  type="submit" (click)="showTips()">
+        <span class="badge badge-danger" >{{itemsCount}}</span> check out
+      </button >
+    </div>   
+  </div>
+</div>
+

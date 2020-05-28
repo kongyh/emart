@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" [(ngModel)]="startPrice" placeholder="start price" aria-label="" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">start price</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" [(ngModel)]="endPrice" placeholder="end price" aria-label="" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <span class="input-group-text" id="basic-addon2">end price</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <!-- <div ngbDropdown class="d-inline-block">
+      <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{selectedManufacturer}}</button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <button ngbDropdownItem *ngFor="let manufacturer of manufacturers"  (click)="changeSelction(manufacturer)">{{manufacturer}}</button>
+      </div>
+    </div> -->
+    <div class="form-group" class="d-inline-block input-group mb-3 ">
+      <select class="form-control" id="selectedManufacturer" [(ngModel)]="selectedManufacturer" name="selectedManufacturer">
+          <option *ngFor="let manufacturer of manufacturers" [value]="manufacturer">{{manufacturer}}</option>
+      </select>
+    </div>
+  </div>
+
+
+
+
+  <div class="col">
+    <div class="d-inline-block">
+      <button  class="btn btn-primary"  type="submit" (click)="search()" >Search</button >
+    </div>
+  </div>
+</div>
+<div class="row">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Description</th>
+      <th scope="col">Manufacturer</th>
+      <th scope="col">Price</th>
+      <th scope="col">Remark</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ item.i_desc }}</td>
+      <td>{{ item.i_mft }}</td>
+      <td>{{ item.i_price }}</td>
+      <td>{{ item.i_remarks }}</td>
+      <td><button  class="btn btn-primary"  type="submit" (click)="checkDetail(item.i_id)">View</button ></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+  
+
+

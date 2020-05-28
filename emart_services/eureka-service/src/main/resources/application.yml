@@ -1,0 +1,2 @@
+spring:  application:    name: eureka-serviceserver:  port: 8761 #eureka port#setup eureka servereureka:  instance:  #register ip to eureka    prefer-ip-address: true  client:    register-with-eureka: false    fetch-registry: false    service-url:      defaultZone: http://localhost:8761/eureka/  server:    enable-self-preservation: false    eviction-interval-timer-in-ms: 5000
+

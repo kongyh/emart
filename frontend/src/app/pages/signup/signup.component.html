@@ -1,0 +1,110 @@
+<div class="row ">
+  
+</div>
+<div class="row">
+  <div class="col-3">
+    <div class="d-none">display:none</div>
+  </div>
+
+  <div class="col-6">
+    <h1 class="h3 mb-3 font-weight-normal text-center">Please sign up</h1>
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <li [ngbNavItem]="1">
+        <a ngbNavLink>Buyer</a>
+        <ng-template ngbNavContent>
+          <form [formGroup]="buyerSignupForm">
+            
+            <div class="form-group row">
+              <span class="required">*</span><label for="b_name" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="b_name" formControlName="b_name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <span class="required">*</span><label for="b_password" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" id="b_password" formControlName="b_password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="b_email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="b_email" formControlName="b_email">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="b_mobile" class="col-sm-2 col-form-label">Mobile</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="b_mobile" formControlName="b_mobile">
+              </div>
+            </div>
+            <div><button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onSubmit(buyerSignupForm.value)">Submit</button></div>
+          </form>
+        </ng-template>
+      </li>
+      
+      <li [ngbNavItem]="2">
+        <a ngbNavLink>Seller</a>
+        <ng-template ngbNavContent>
+          <form [formGroup]="sellerSignupForm">
+            <div class="form-group row">
+              <span class="required">*</span><label for="s_name" class="col-sm-2 col-form-label">Name</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="s_name" formControlName="s_name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <span class="required">*</span><label for="s_password" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" id="s_password" formControlName="s_password">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="s_email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="s_email" formControlName="s_email">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="s_mobile" class="col-sm-2 col-form-label">Mobile</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="s_mobile" formControlName="s_mobile">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="s_company" class="col-sm-2 col-form-label">Company</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="s_company" formControlName="s_company">
+              </div>
+            </div>
+            <div class="form-group row">
+              <span class="required">*</span><label for="s_brief_company" class="col-sm-2 col-form-label">Company Brief</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="s_brief_company" formControlName="s_brief_company">
+              </div>
+            </div>
+            <div class="form-group row">
+              <span class="required">*</span><label for="s_address" class="col-sm-2 col-form-label">Company Address</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="s_address" formControlName="s_address">
+              </div>
+            </div>
+            <div class="form-group row">
+              <span class="required">*</span><label for="s_website" class="col-sm-2 col-form-label">Company Web Site</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" id="s_website" formControlName="s_website">
+              </div>
+            </div>
+            <div><button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onSubmit(sellerSignupForm.value)">Submit</button></div>
+          </form>
+        </ng-template>
+      </li>
+      
+    </ul>
+    
+    
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
+   
+    <!-- <pre>Active: {{ active }}</pre> -->
+</div>
+</div>

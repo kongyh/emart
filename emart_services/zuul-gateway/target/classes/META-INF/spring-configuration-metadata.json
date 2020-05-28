@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "data-filter",
+      "type": "com.fsd.emart.gateway.config.DataFilterConfig",
+      "sourceType": "com.fsd.emart.gateway.config.DataFilterConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "data-filter.auth-path",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.fsd.emart.gateway.config.DataFilterConfig"
+    },
+    {
+      "name": "data-filter.user-login-path",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.fsd.emart.gateway.config.DataFilterConfig"
+    }
+  ],
+  "hints": []
+}

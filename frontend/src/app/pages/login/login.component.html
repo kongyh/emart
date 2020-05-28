@@ -1,0 +1,36 @@
+<div class="div-signin">
+  <!-- 用户名处的required是由Validator提供的内置校验方法，但是html元素也有叫
+ required的属性，所以在form上加一个novalidate，表示不需要浏览器的默认校验-->
+  <form class="form-signin" #myForm="ngForm" (ngSubmit)="onSubmit(myForm.value)" novalidate>
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    
+    <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
+      <label ngbButtonLabel class="btn-primary">
+        <input ngbButton type="radio" [value]="0"> Buyer
+      </label>
+      <label ngbButtonLabel class="btn-primary">
+        <input ngbButton type="radio" [value]="1"> Seller
+      </label>
+    </div>
+     
+    <p *ngFor="let alert of alerts">
+      <ngb-alert [type]="alert.type" (close)="close(alert)">{{ alert.message }}</ngb-alert>
+    </p>
+    
+    <!-- bootstrap utilities/screenreaders   -->
+    <label for="inputUsername" class="sr-only">User name</label>
+    <input ngModel name="name" id="inputUsername" class="form-control" placeholder="UserName" type="text" [(ngModel)]="inputUsername">
+
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input ngModel name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" >
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" [checked]="ifChecked"> Remember Me
+      </label>
+    </div>
+    <span class="tips">Tips: any username, and password length>6, you can login</span>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
+    <span class="tips">do not have account, <a [routerLink]="['/signup']">sign up here</a></span>
+  </form>
+</div>
