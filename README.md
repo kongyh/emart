@@ -1,3 +1,9 @@
+# Mileston 5
+1. Jmeter file is located in:\emart_services\user-service\src\test\jmeter\test.jmx
+2. Dockerfile: \emart_services\user-service\src\main\docker\
+3. Jekins file:  \emart_services\jenkinsfile
+
+
 # Emartui
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
