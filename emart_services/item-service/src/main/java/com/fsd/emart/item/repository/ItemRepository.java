@@ -28,7 +28,8 @@ public interface ItemRepository extends JpaRepository<Item,Integer>{
 	@Query(value="select distinct i_mft from item",nativeQuery = true)
 	public List<String> getManufactures();
 	
-	
+	@Query(value="select * from item where i_id = ?1",nativeQuery = true)
+	public Item getItemById(Long id);
 	
 }
 

@@ -7,7 +7,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
-		<module>auth-service</module>
 		<module>eureka-service</module>
 		<module>zuul-gateway</module>
 		<module>item-service</module>

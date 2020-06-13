@@ -1,3 +1,5 @@
+import { Cart } from './cart';
+
 export class Item{
     i_id: number;
     i_name:string;
@@ -7,5 +9,6 @@ export class Item{
     i_desc: string;
     i_mft: string;
     i_stock_num: number;
-    i_remarks: string
+    i_remarks: string;
+    cart: Cart
 }

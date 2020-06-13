@@ -1,5 +1,6 @@
 package com.fsd.emart.cart.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +21,26 @@ public class CartServiceImpl implements CartService {
 	ItemRepository itemRepository;
 	
     @Override
-	public Cart addInCart(Item item) {
-    	Cart cart = cartRepository.getCart(item.getCart().getUsername());
-    	item.setCart(cart);
-    	List<Item> itemList= cart.getList();
-    	itemList.add(item);
-    	cart.setList(itemList);
-		/* itemRepository.save(item); */
+	public Cart addInCart(Item item) {   	
+    	//Cart cart = cartRepository.getCart(item.getCart().getUsername());
+    	Cart cart = item.getCart();
+    	List<Item> itemArr = new ArrayList<Item>();
+    	itemArr.add(item);
+		cart.setList(itemArr);
 		return cartRepository.saveAndFlush(cart);
-		
+//    	if(cart==null) {
+//    		cart = item.getCart();
+//    		cart.setList(itemArr);
+//    		return cartRepository.saveAndFlush(cart);
+//    	}else {
+//    		itemRepository.save(item);
+//    		return cart;
+//    	}
 	}
 
 	@Override
 	public Cart removeInCart(Item item) {
-		itemRepository.deleteItem(item.getCart().getCart_id(),item.getItem_name(),item.getItem_manufacture());
+		itemRepository.deleteItem(item.getCart().getCart_id(),item.getI_name(),item.getI_mft());
 		return this.getCart(item.getCart().getUsername());
 	}
 

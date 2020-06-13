@@ -37,9 +37,9 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public Item getItem(Integer id) {
-		Optional<Item> itemOptional = itemRepository.findById(id);
-		if(itemOptional.isPresent()){
-		    return itemOptional.get();
+		Item item = itemRepository.getItemById(id.longValue());
+		if(item!=null){
+		    return item;
 		}else {
 		    return null;
 		}

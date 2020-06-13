@@ -17,6 +17,7 @@ public class Item {
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long i_id;
+	private String i_name;
 	private int i_category_id;
 	private int i_subcategory_id;
 	@Column(nullable = false)

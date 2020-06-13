@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
               const info: any = data;
               if (200 === info.code) {
                   
-                  
+                  sessionStorage.setItem("username",value.name);
                   if(out_this.ifChecked){
                     console.log("remember username:"+value.name);
                     out_this.ls.set("username",value.name);

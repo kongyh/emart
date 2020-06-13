@@ -10,7 +10,8 @@ const items_list: Item[] =[
         i_desc: "watch",
         i_mft: "tao bao",
         i_stock_num: 1000,
-        i_remarks: "so so"
+        i_remarks: "so so",
+        cart:null
     },{
         i_id: 2,
         i_name:"watch",
@@ -20,7 +21,8 @@ const items_list: Item[] =[
         i_desc: "watch",
         i_mft: "tian mao",
         i_stock_num: 1001,
-        i_remarks: "better"
+        i_remarks: "better",
+        cart:null
     },{
         i_id: 3,
         i_name:"watch",
@@ -30,7 +32,8 @@ const items_list: Item[] =[
         i_desc: "watch",
         i_mft: "tian suo",
         i_stock_num: 1002,
-        i_remarks: "great"
+        i_remarks: "great",
+        cart:null
     }
 ]
 

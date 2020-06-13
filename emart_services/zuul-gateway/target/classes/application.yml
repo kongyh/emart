@@ -20,6 +20,14 @@ zuul:
       path: /api/item/**
       serviceId: item-service
       strip-prefix: false
+    cart:
+      path: /api/cart/**
+      serviceId: cart-service
+      strip-prefix: false
+    order:
+      path: /api/order/**
+      serviceId: order-service
+      strip-prefix: false
 data-filter:
   auth-path: #validate token, will trigger JwtAuthPreFilter
     - /api/**

@@ -28,20 +28,20 @@ public class TestRepository {
 	@Test
 	public void testSave() {
 		Cart cart = new Cart();
-		cart.setUsername("kkkk");
+		cart.setUsername("nina");
 
 		Item item1 = new Item();
-		item1.setItem_name("item1");
-		item1.setItem_price(new BigDecimal(1000));
-		item1.setItem_manufacture("taobao");
-		item1.setItem_stock_number(20);
+		item1.setI_name("item1");
+		item1.setI_price(new BigDecimal(1000));
+		item1.setI_mft("taobao");
+		item1.setI_stock_num(20);
 		item1.setCart(cart);
 
 		Item item2 = new Item();
-		item2.setItem_name("item2");
-		item2.setItem_price(new BigDecimal(2000));
-		item2.setItem_manufacture("jingdong");
-		item2.setItem_stock_number(20);
+		item2.setI_name("item2");
+		item2.setI_price(new BigDecimal(2000));
+		item2.setI_mft("jingdong");
+		item2.setI_stock_num(20);
 		item2.setCart(cart);
 		
 		List<Item> list = new ArrayList<Item>();

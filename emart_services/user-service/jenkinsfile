@@ -1,0 +1,25 @@
+pipeline {
+   agent any
+
+   stages {
+      stage('pull code') {
+         steps {
+            echo 'start pull code'
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/kongyh/emart.git']]])
+            echo 'end pull code'
+         }
+      }
+      
+      stage('build') {
+         steps {
+            echo 'start build'
+            echo pwd()
+            dir('emart_services'){
+                bat label: '', script: 'mvn clean package'
+            }
+            echo 'end build'
+         }
+      }
+   }
+   
+}

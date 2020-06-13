@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Item } from "../../models/item";
+import { Cart } from "../../models/cart";
 import { ItemService } from "../../services/item.service";
 import { MessageService } from "../../services/message.service";
 import { Subscription } from 'rxjs';
@@ -26,8 +27,8 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      console.log("detial page-ngoninit-id:"+params.get('id'));
-      this.itemService.get_item(Number(params.get('id'))).subscribe(data =>{
+      console.log("detial page-ngoninit-id:"+params.get('itemId'));//.get('id')
+      this.itemService.get_item(parseInt(params.get('itemId').replace(/[^0-9]/ig,""))).subscribe(data =>{
         this.item = data;
       })
     });    
@@ -45,8 +46,16 @@ export class DetailComponent implements OnInit {
    
    send(item:Item):void {
     this.messageService.sendMessage("MessageService in detail:add into cart");
-    let cartArr = [];
+    // let cartArr = [];
+    // cartArr.push(item);
+    delete item.i_id;
+    console.log("add item into cart:"+JSON.stringify(item));
+    let cart  = new Cart();
+    cart.username = sessionStorage.getItem("username");
+    // cart.list = cartArr;
+    item.cart = cart;
     this.itemService.addInCart(item).subscribe(data=>{
+      console.log("detail page-response of add into cart:"+JSON.stringify(data));
       if(data!=null){
         window.alert("add into cart successfully!")
       }

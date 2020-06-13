@@ -54,7 +54,7 @@ export class ItemService {
 
   addInCart(item:Item){
     console.log("item service-add into cart:"+JSON.stringify(item));
-    return this.http.post(`${environment.baseUrl}/api/cart/addCart`, JSON.stringify(item), httpOptions);
+    return this.http.put(`${environment.baseUrl}/api/cart/addCart`, JSON.stringify(item), httpOptions);
   }
 
   getCart(username:String){
