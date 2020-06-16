@@ -1,34 +1,36 @@
 package com.fsd.emart.order.entity;
 
-import java.sql.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 
 import org.springframework.data.annotation.CreatedDate;
 
-import com.fsd.emart.order.common.OrderStatus;
+import com.fsd.emart.order.model.Item;
 
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name="user_order")
 public class Order {
 	@Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long order_id;
-	private String order_username;
-	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	private List<Item> order_item_list;
+	private Long o_id;
+	private String o_username;
 	@CreatedDate
     @Column(updatable = false, nullable = false)
-    private Date order_created_time;
-	private OrderStatus order_status;
+    private Date o_created_time;
+	private String o_status;
+	@Lob
+	@Column(columnDefinition="LONGTEXT")
+	private String itemList;
+	
+	
 }

@@ -30,26 +30,19 @@ public class TestRepository {
 		Cart cart = new Cart();
 		cart.setUsername("nina");
 
-		Item item1 = new Item();
-		item1.setI_name("item1");
-		item1.setI_price(new BigDecimal(1000));
-		item1.setI_mft("taobao");
-		item1.setI_stock_num(20);
-		item1.setCart(cart);
-
-		Item item2 = new Item();
-		item2.setI_name("item2");
-		item2.setI_price(new BigDecimal(2000));
-		item2.setI_mft("jingdong");
-		item2.setI_stock_num(20);
-		item2.setCart(cart);
-		
-		List<Item> list = new ArrayList<Item>();
-		list.add(item1);
-		list.add(item2);
-		
-		cart.setList(list);
-		cartRepository.saveAndFlush(cart);
+		/*
+		 * Item item1 = new Item(); item1.setI_name("item1"); item1.setI_price(new
+		 * BigDecimal(1000)); item1.setI_mft("taobao"); item1.setI_stock_num(20);
+		 * item1.setCart(cart);
+		 * 
+		 * Item item2 = new Item(); item2.setI_name("item2"); item2.setI_price(new
+		 * BigDecimal(2000)); item2.setI_mft("jingdong"); item2.setI_stock_num(20);
+		 * item2.setCart(cart);
+		 * 
+		 * List<Item> list = new ArrayList<Item>(); list.add(item1); list.add(item2);
+		 * 
+		 * cart.setList(list); cartRepository.saveAndFlush(cart);
+		 */
 	}
 	
 	@Before

@@ -4,6 +4,8 @@ import { LocalStorage } from "../../pages/localstorage";
 import { MessageService } from "../../services/message.service";
 import { ItemAlertComponent } from "../../component/itemAlert/itemAlert.component";
 import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
+import { CartService } from 'src/app/services/cart.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,30 +13,44 @@ import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  items: Item[];
+  items: any;
   total: number=0;
   disTotal: number=0;
   itemsCount: number;
+  username: string;
   constructor(private ls: LocalStorage,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private cartService: CartService,
+    private orderService: OrderService
   ) { }
 
 
   ngOnInit() {
-    if(JSON.stringify(this.ls.getObject("cart"))!='{}'){
-      console.log("navbar,cart is not empty:"+this.ls.getObject("cart").length);
-      this.items = this.ls.getObject("cart");
-      this.total = this.calTotal(this.items);
-      this.disTotal = this.total;
-      this.itemsCount = this.items.length;
-    }
+    this.username = sessionStorage.getItem("username");  
+    this.cartService.getCart(this.username).subscribe(data =>{
+        console.log("navbar -- response of get cart:"+JSON.stringify(data));
+        this.items  = data;
+        this.total = this.calTotal(this.items) ;
+        this.disTotal = this.total;
+        if(data!=null){
+          this.itemsCount = this.items.length;
+        }else{
+          this.itemsCount=0;
+        }
+        
+      });
   }
 
-  deleteItem(index: number){
-    this.items.splice(index,1);
-    this.ls.setObject("cart",this.items);
-    this.messageService.sendMessage("MessageService in cart: delete in cart");
-    this.itemsCount = this.items.length;
+  deleteItem(i_id: number){
+    // this.items.splice(index,1);
+    // this.ls.setObject("cart",this.items);
+    let out_this = this;
+    debugger
+    this.cartService.deleteInCart(i_id).subscribe(data =>{
+      out_this.messageService.sendMessage("MessageService in cart: delete in cart");
+      out_this.ngOnInit();
+    })
+    
   }
 
   onNotify() {
@@ -53,9 +69,14 @@ export class CartComponent implements OnInit {
     this.disTotal = this.total*0.85;
   }
 
-  showTips(){
+  submitOrder(){
     console.log("show tips in");
-    window.alert('This function is on ToDo List');
+    debugger;
+    this.orderService.submitOrder(this.items).subscribe(data=>{
+      console.log("order service--reponse of submit orders:"+JSON.stringify(data));
+      window.alert('You have submitted your order with unpaid status!');
+    })
+    
   }
 
 }

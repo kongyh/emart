@@ -1,6 +1,7 @@
 package com.fsd.emart.cart.controller;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,18 +24,19 @@ public class CartController {
 	CartServiceImpl cartService;
 	
 	@GetMapping("/myCart")
-	public Cart getMyCart(@RequestParam(name="username", required=true)String username) {
+	public List<Cart> getMyCart(@RequestParam(name="username", required=true)String username) {
 		return cartService.getCart(username);
 	}
 	
 	@PutMapping("/addCart")
-	public Cart addInCart(@RequestBody Item item) {
-		return cartService.addInCart(item);
+	public Cart addInCart(@RequestBody Cart cart) {
+		return cartService.addInCart(cart);
 	}
 	
-	@DeleteMapping("/deleteCart")
-	public Cart deleteInCart(@RequestBody Item item) {
-		return cartService.removeInCart(item);
+	@DeleteMapping("/deleteInCart")
+	public void deleteInCart(@RequestParam(name="i_id", required=true)String id) {
+		int i_id = Integer.parseInt(id);
+		cartService.deleteInCart(i_id);
 	}
 	
 	@PostMapping("/editInCart")

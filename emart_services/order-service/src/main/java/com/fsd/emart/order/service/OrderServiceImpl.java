@@ -3,10 +3,12 @@ package com.fsd.emart.order.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.fsd.emart.order.entity.Order;
 import com.fsd.emart.order.repository.OrderRepository;
 
+@Service
 public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
@@ -24,8 +26,9 @@ public class OrderServiceImpl implements OrderService{
 
 	@Override
 	public Order payOrder(Order order) {
-		orderRepository.updateOrderStatus(order.getOrder_status(), order.getOrder_username(), order.getOrder_id());
-		return orderRepository.getOrdersById(order.getOrder_id());
+//		orderRepository.updateOrderStatus(order.getO_status(), order.getO_username(), order.getO_id());
+//		return orderRepository.getOrdersById(order.getO_id());
+		return null;
 	}
 
 }

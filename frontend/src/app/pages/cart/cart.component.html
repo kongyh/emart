@@ -17,7 +17,7 @@
         <td>{{ item.i_price }}</td>
         <td>{{ item.i_remarks }}</td>
       <td><app-itemAlert [item]="item" (notify)="onNotify()"></app-itemAlert></td>
-      <td><button  class="btn btn-primary"  type="submit" (click)="deleteItem(i)" >Delete</button ></td>
+      <td><button  class="btn btn-primary"  type="submit" (click)="deleteItem(item.i_id)" >Delete</button ></td>
       </tr>
     </tbody>
   </table>
@@ -51,7 +51,7 @@
 <div class="row">
   <div class="col">
     <div class="float-right">
-      <button  class="btn btn-primary "  type="submit" (click)="showTips()">
+      <button  class="btn btn-primary "  type="submit" (click)="submitOrder()">
         <span class="badge badge-danger" >{{itemsCount}}</span> check out
       </button >
     </div>   

@@ -10,5 +10,5 @@ export class Item{
     i_mft: string;
     i_stock_num: number;
     i_remarks: string;
-    cart: Cart
+    username: string
 }

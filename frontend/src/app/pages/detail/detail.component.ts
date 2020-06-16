@@ -6,6 +6,7 @@ import { ItemService } from "../../services/item.service";
 import { MessageService } from "../../services/message.service";
 import { Subscription } from 'rxjs';
 import { LocalStorage } from "../../pages/localstorage";
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-detail',
@@ -19,6 +20,7 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private itemService: ItemService, 
+    private cartService: CartService,
     private route: ActivatedRoute,
     private messageService: MessageService,
     private ls: LocalStorage
@@ -46,15 +48,10 @@ export class DetailComponent implements OnInit {
    
    send(item:Item):void {
     this.messageService.sendMessage("MessageService in detail:add into cart");
-    // let cartArr = [];
-    // cartArr.push(item);
     delete item.i_id;
     console.log("add item into cart:"+JSON.stringify(item));
-    let cart  = new Cart();
-    cart.username = sessionStorage.getItem("username");
-    // cart.list = cartArr;
-    item.cart = cart;
-    this.itemService.addInCart(item).subscribe(data=>{
+    item.username = sessionStorage.getItem("username");
+    this.cartService.addInCart(item).subscribe(data=>{
       console.log("detail page-response of add into cart:"+JSON.stringify(data));
       if(data!=null){
         window.alert("add into cart successfully!")

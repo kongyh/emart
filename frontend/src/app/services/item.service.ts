@@ -52,15 +52,15 @@ export class ItemService {
     return this.http.get(`${environment.baseUrl}/api/item/getFilterItems`,{params});
   }
 
-  addInCart(item:Item){
-    console.log("item service-add into cart:"+JSON.stringify(item));
-    return this.http.put(`${environment.baseUrl}/api/cart/addCart`, JSON.stringify(item), httpOptions);
-  }
+  // addInCart(item:Item){
+  //   console.log("item service-add into cart:"+JSON.stringify(item));
+  //   return this.http.put(`${environment.baseUrl}/api/cart/addCart`, JSON.stringify(item), httpOptions);
+  // }
 
-  getCart(username:String){
-    console.log("item service-add into cart:"+JSON.stringify(username));
-    const params = new HttpParams().set('username',username.toString());
-    return this.http.get(`${environment.baseUrl}/api/cart/myCart`, {params});
-  }
+  // getCart(username:String){
+  //   console.log("item service-add into cart:"+JSON.stringify(username));
+  //   const params = new HttpParams().set('username',username.toString());
+  //   return this.http.get(`${environment.baseUrl}/api/cart/myCart`, {params});
+  // }
 
 }
