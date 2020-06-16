@@ -27,4 +27,10 @@ export class OrderService {
     return this.http.put(`${environment.baseUrl}/api/order/submitOrder`, JSON.stringify(order), httpOptions);
   }
 
+  getOrder(username:string){
+    console.log("order service-get order:"+JSON.stringify(username));
+    const params = new HttpParams().set('username',username.toString());
+    return this.http.get(`${environment.baseUrl}/api/order/getMyOrder`, {params});
+  }
+
 }

@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { SearchComponent } from './pages/search/search.component';
 import { DetailComponent } from './pages/detail/detail.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { OrderComponent } from "./pages/order/order.component";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { SellerHomeComponent } from "./pages/seller-home/seller-home.component";
 import { SellerInvertoryComponent } from "./pages/seller-invertory/seller-invertory.component";
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: "search", component: SearchComponent,canActivate: [SigninGuard] },
   { path: "detail/:itemId", component:  DetailComponent,canActivate: [SigninGuard]},
   { path: "cart", component: CartComponent,canActivate: [SigninGuard] },
+  { path: "myOrder", component: OrderComponent,canActivate: [SigninGuard] },
   { path: "signup", component: SignupComponent },
   { path: "sellerHome", component: SellerHomeComponent },
   { path: "sellerInventory", component: SellerInvertoryComponent },

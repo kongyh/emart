@@ -50,24 +50,31 @@ export class NavbarComponent implements OnInit {
     this.subscription = this.messageService.getMessage().subscribe(msg => {
       console.log("MessageService in Navbar:get message"+JSON.stringify(msg));   
       console.log("user name is:"+this.username);
-      if(JSON.stringify(msg).indexOf("add")>-1){
-        // this.count_in_cart +=1;
-        this.cartService.getCart(this.username).subscribe(data =>{
-          let cart_list: any = data;
-          this.count_in_cart = cart_list.length;
-          console.log("navbar -- response of get cart:"+JSON.stringify(data));
-        });
+      // if(JSON.stringify(msg).indexOf("add")>-1){
+      //   // this.count_in_cart +=1;
+      //   this.cartService.getCart(this.username).subscribe(data =>{
+      //     let cart_list: any = data;
+      //     this.count_in_cart = cart_list.length;
+      //     console.log("navbar -- response of get cart:"+JSON.stringify(data));
+      //   });
        
-      }else if(JSON.stringify(msg).indexOf("delete")>-1){
-        // this.count_in_cart -=1;
-        this.cartService.getCart(this.username).subscribe(data =>{
-          let cart_list: any = data;
-          this.count_in_cart = cart_list.length;
-          console.log("navbar -- response of get cart:"+JSON.stringify(data));
-        });
-      }else if(JSON.stringify(msg).indexOf("authenticated")>-1){      
+      // }else if(JSON.stringify(msg).indexOf("delete")>-1){
+      //   // this.count_in_cart -=1;
+      //   this.cartService.getCart(this.username).subscribe(data =>{
+      //     let cart_list: any = data;
+      //     this.count_in_cart = cart_list.length;
+      //     console.log("navbar -- response of get cart:"+JSON.stringify(data));
+      //   });
+      // }else 
+      if(JSON.stringify(msg).indexOf("authenticated")>-1){      
         this.ifCartHidden=false;
         this.ifLoginHidden=true;
+      }else{
+        this.cartService.getCart(this.username).subscribe(data =>{
+          let cart_list: any = data;
+          this.count_in_cart = cart_list.length;
+          console.log("navbar -- response of get cart:"+JSON.stringify(data));
+        });
       }
 
       if(JSON.stringify(msg).indexOf("seller")>-1){
@@ -91,5 +98,9 @@ export class NavbarComponent implements OnInit {
      this.router.navigate(["/login"]);
      this.ifLoginHidden=false;
      this.ifCartHidden=true;
+   }
+
+   myOrder(){
+    this.router.navigate(["/myOrder"]);
    }
 }

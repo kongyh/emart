@@ -6,6 +6,7 @@ import { ItemAlertComponent } from "../../component/itemAlert/itemAlert.componen
 import { ITS_JUST_ANGULAR } from '@angular/core/src/r3_symbols';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -21,7 +22,8 @@ export class CartComponent implements OnInit {
   constructor(private ls: LocalStorage,
     private messageService: MessageService,
     private cartService: CartService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router
   ) { }
 
 
@@ -72,9 +74,20 @@ export class CartComponent implements OnInit {
   submitOrder(){
     console.log("show tips in");
     debugger;
+    let out_this = this;
     this.orderService.submitOrder(this.items).subscribe(data=>{
       console.log("order service--reponse of submit orders:"+JSON.stringify(data));
-      window.alert('You have submitted your order with unpaid status!');
+      if(JSON.stringify(data).indexOf("o_id")>-1){
+        window.alert('You have submitted your order with unpaid status!');
+        out_this.cartService.clearCart(this.username).subscribe(data=>{
+          out_this.messageService.sendMessage("MessageService in cart: delete in cart");
+          out_this.router.navigate(['/search']);
+        })
+      }else{
+        window.alert('Failed on check out!');
+      }
+     
+
     })
     
   }

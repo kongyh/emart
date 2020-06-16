@@ -39,4 +39,9 @@ public class CartServiceImpl implements CartService {
 		return cartRepository.saveAndFlush(cart);
 	}
 
+	@Override
+	public void clearCart(String username) {
+		cartRepository.clearCart(username);
+	}
+
 }

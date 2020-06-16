@@ -39,6 +39,11 @@ public class CartController {
 		cartService.deleteInCart(i_id);
 	}
 	
+	@DeleteMapping("/clearCart")
+	public void clearCart(@RequestParam(name="username", required=true)String username) {
+		cartService.clearCart(username);
+	}
+	
 	@PostMapping("/editInCart")
 	public Cart editInCart(@RequestBody Cart cart) {
 		return cartService.editInCart(cart);

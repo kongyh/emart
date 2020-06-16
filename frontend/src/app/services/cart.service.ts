@@ -23,7 +23,7 @@ export class CartService {
   }
 
   getCart(username:String){
-    console.log("item service-get cart:"+JSON.stringify(username));
+    console.log("cart service-get cart:"+JSON.stringify(username));
     const params = new HttpParams().set('username',username.toString());
     return this.http.get(`${environment.baseUrl}/api/cart/myCart`, {params});
   }
@@ -32,6 +32,12 @@ export class CartService {
     console.log("cart service-delete cart -- item_id:"+i_id.toString);
     const params = new HttpParams().set('i_id',i_id.toString());
     return this.http.delete(`${environment.baseUrl}/api/cart/deleteInCart`, {params});
+  }
+
+  clearCart(username:String){
+    console.log("cart service-clear cart:"+JSON.stringify(username));
+    const params = new HttpParams().set('username',username.toString());
+    return this.http.delete(`${environment.baseUrl}/api/cart/clearCart`, {params});
   }
    
 

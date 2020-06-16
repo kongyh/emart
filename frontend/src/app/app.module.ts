@@ -18,6 +18,7 @@ import { DetailComponent } from './pages/detail/detail.component'
 import { NavbarComponent } from "./component/navbar/navbar.component";
 import { FooterComponent } from './component/footer/footer.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { OrderComponent } from "./pages/order/order.component";
 import { ItemAlertComponent } from "./component/itemAlert/itemAlert.component";
 import { SignupComponent } from "./pages/signup/signup.component";
 import { SellerHomeComponent } from "./pages/seller-home/seller-home.component";
@@ -38,6 +39,7 @@ import {JwtInterceptor} from './interceptor/jwt.interceptor';
     FooterComponent,
     DetailComponent,
     CartComponent,
+    OrderComponent,
     ItemAlertComponent,
     SignupComponent,
     SellerHomeComponent,

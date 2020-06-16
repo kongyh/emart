@@ -19,16 +19,22 @@ import com.fsd.emart.order.entity.Order;
 @Repository
 public interface OrderRepository extends JpaRepository<Order,Integer>{
 	
-	@Query(value="select from order where order_username=?",nativeQuery = true)
-	public List<Order> getOrdersByName(@Param("order_username")String order_username);
+	@Query(value="select * from user_order where o_username=?",nativeQuery = true)
+	public List<Order> getOrdersByName(@Param("username")String username);
 	
-	@Query(value="select from order where order_id=?",nativeQuery = true)
-	public Order getOrdersById(@Param("order_id")Long order_id);
-	
-	@Query(value="select from order where order_status=? and order_username=?",nativeQuery = true)
-	@Transactional
-	public List<Order> getOrderByStatus(@Param("order_status") OrderStatus order_status, 
-			@Param("order_username")String order_username);
+	/*
+	 * @Query(value="select * from user_order where order_id=?",nativeQuery = true)
+	 * public Order getOrdersById(@Param("order_id")Long order_id);
+	 * 
+	 * @Query(
+	 * value="select * from user_order where order_status=? and order_username=?"
+	 * ,nativeQuery = true)
+	 * 
+	 * @Transactional public List<Order> getOrderByStatus(@Param("order_status")
+	 * OrderStatus order_status,
+	 * 
+	 * @Param("order_username")String order_username);
+	 */
 	
 	@Modifying
 	@Query(value="updte order set order_status=? where order_username=? and order_id=?",nativeQuery = true)
